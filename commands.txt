@@ -1,0 +1,39 @@
+Task01:
+  612  cat > pets
+  613  cat > pack_animals
+  614  cat pets >> pack_animals
+  615  cat pack_animals
+  616  mv pack_animals man's_friends
+  617  mv pack_animals mans_friends
+  618  ll
+  
+Task02:
+  620  mkdir animals
+  621  ll
+  622  mv mans_friends animals/
+  623  ll animals/
+
+Task03:
+  640  apt-add-repository --help
+  641  nano /etc/apt/sources.list
+  642  cat > /etc/apt/sources.list.d/mysql.list
+  643  sudo cat > /etc/apt/sources.list.d/mysql.list
+  644  sudo su
+    1  cat > /etc/apt/sources.list.d/mysql.list
+    2  nano /etc/apt/sources.list.d/mysql.list
+    3  apt-key adv --keyserver pgp.mit.edu --recv-keys 3A79BD29
+    4  apt update
+    5  exit
+
+deb http://repo.mysql.com/apt/ubuntu/ jammy mysql-8.0
+
+Task04:
+  663  apt download zip
+  664  ll
+  665  sudo dpkg -i zip_3.0-12build2_amd64.deb
+  666  zip --help
+  667  sudo dpkg -r zip
+  668  zip --help
+  669  rm zip_3.0-12build2_amd64.deb
+
+  
