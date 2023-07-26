@@ -1,4 +1,4 @@
-package org.example.classes;
+package org.example.animals;
 
 import java.util.Date;
 import java.util.List;
@@ -32,7 +32,12 @@ public abstract class Animals {
         return kind;
     }
 
-    protected void NewCommand(String command){
+    protected void newCommand(String command){
         commands.add(command);
+    }
+
+    @Override
+    public String toString() {
+        return name + '\t' + birthday + '\t'+ commands+ '\t' + type + '\t' + kind;
     }
 }

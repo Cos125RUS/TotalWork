@@ -1,4 +1,4 @@
-package org.example.classes;
+package org.example.animals;
 
 import java.util.Date;
 import java.util.List;

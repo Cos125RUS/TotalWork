@@ -1,2 +1,4 @@
-package org.example.mvc;public class Parser {
+package org.example.mvc;
+
+public class Parser {
 }

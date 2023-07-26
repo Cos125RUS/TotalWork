@@ -1,5 +1,7 @@
 package org.example.impl;
 
-public interface UI {
-    public void NewAnimal();
+import org.example.animals.Animals;
+
+public interface Reg {
+    public void newAnimal(Animals animal);
 }
