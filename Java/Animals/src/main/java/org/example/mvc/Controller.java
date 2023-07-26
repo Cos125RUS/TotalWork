@@ -1,19 +1,23 @@
 package org.example.mvc;
 
 import org.example.exceptions.EnterChoiceException;
+import org.example.exceptions.KindException;
+import org.example.exceptions.TypeException;
 import org.example.impl.Ctrl;
 
+import java.util.Date;
 import java.util.InputMismatchException;
+import java.util.List;
 
 public class Controller implements Ctrl {
     private View ui;
-    private Parser parser;
+    private Creator creator;
     private Registry registry;
     private Writer writer;
 
     public Controller() {
         this.ui = new View();
-        this.parser = new Parser();
+        this.creator = new Creator();
         this.registry = new Registry();
         this.writer = new Writer();
     }
@@ -24,31 +28,82 @@ public class Controller implements Ctrl {
         ui.showMenu();
         try {
             userChoice = writer.enterChoice();
+            action(userChoice);
         } catch (InputMismatchException e) {
             ui.inputMismatch();
             start();
         } catch (EnterChoiceException e) {
             ui.enterChoice();
             start();
-        } finally {
-            action(userChoice);
         }
     }
 
     @Override
     public void action(int choice) {
-        switch (choice){
+        switch (choice) {
             case 1:
                 ui.showAnimals(registry.toString());
                 break;
 
             case 2:
-
+                newAnimals();
                 break;
 
             default:
                 ui.goodBy();
                 break;
         }
+    }
+
+    @Override
+    public void newAnimals() {
+        String type = type();
+        String kind = kind(type);
+        String name = animalName();
+        Date birthday = birthday();
+        List<String> commands = commands();
+    }
+
+    @Override
+    public String type() {
+        String type = null;
+        do {
+            ui.enterType();
+            try {
+                type = writer.enterType();
+            } catch (InputMismatchException | TypeException e) {
+                ui.typeException();
+            }
+        } while (type == null);
+        return type;
+    }
+
+    @Override
+    public String kind(String type) {
+        String kind = null;
+        do {
+            ui.enterKind();
+            try {
+                kind = writer.enterKind(type);
+            } catch (InputMismatchException | KindException e) {
+                ui.kindException();
+            }
+        } while (kind == null);
+        return kind;
+    }
+
+    @Override
+    public String animalName() {
+        return null;
+    }
+
+    @Override
+    public List<String> commands() {
+        return null;
+    }
+
+    @Override
+    public Date birthday() {
+        return null;
     }
 }

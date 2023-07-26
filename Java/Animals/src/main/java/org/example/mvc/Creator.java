@@ -1,4 +1,5 @@
 package org.example.mvc;
 
-public class Parser {
+public class Creator {
+
 }
