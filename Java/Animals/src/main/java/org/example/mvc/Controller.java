@@ -1,10 +1,9 @@
 package org.example.mvc;
 
-import org.example.exceptions.EnterChoiceException;
-import org.example.exceptions.KindException;
-import org.example.exceptions.TypeException;
+import org.example.exceptions.*;
 import org.example.impl.Ctrl;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -60,7 +59,7 @@ public class Controller implements Ctrl {
         String type = type();
         String kind = kind(type);
         String name = animalName();
-        Date birthday = birthday();
+        Calendar birthday = birthday();
         List<String> commands = commands();
     }
 
@@ -94,16 +93,35 @@ public class Controller implements Ctrl {
 
     @Override
     public String animalName() {
-        return null;
+        String name = null;
+        do {
+            ui.enterName();
+            try {
+                name = writer.enterName();
+            } catch (InputMismatchException | NameException e) {
+                ui.nameException();
+            }
+        } while (name == null);
+        return name;
     }
 
     @Override
     public List<String> commands() {
+
         return null;
     }
 
     @Override
-    public Date birthday() {
-        return null;
+    public Calendar birthday() {
+        Calendar birthday = null;
+        do {
+            ui.enterBirthday();
+            try {
+                birthday = writer.enterBirthday();
+            } catch (InputMismatchException | BirthdayException e) {
+                ui.birthdayException();
+            }
+        } while (birthday == null);
+        return birthday;
     }
 }

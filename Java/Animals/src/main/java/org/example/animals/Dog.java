@@ -1,5 +1,6 @@
 package org.example.animals;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class Dog extends Pets{
         super(name, "Dog");
     }
 
-    public Dog(String name, Date birthday, List<String> commands) {
+    public Dog(String name, Calendar birthday, List<String> commands) {
         super(name, birthday, commands, "Dog");
     }
 }

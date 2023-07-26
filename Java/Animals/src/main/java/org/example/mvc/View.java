@@ -44,7 +44,7 @@ public class View implements Menu, ErrorView {
 
     @Override
     public void enterBirthday() {
-        System.out.print("Enter birthday: ");
+        System.out.print("Enter birthday(dd.mm.yyyy): ");
     }
 
     @Override
@@ -86,4 +86,15 @@ public class View implements Menu, ErrorView {
     public void kindException() {
         System.out.println("Unknown kind of animal");
     }
+
+    @Override
+    public void nameException() {
+        System.out.println("Invalid name");
+    }
+
+    @Override
+    public void birthdayException() {
+        System.out.println("Invalid date");
+    }
+
 }

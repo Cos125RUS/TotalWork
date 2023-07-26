@@ -1,15 +1,15 @@
 package org.example.impl;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 public interface Ctrl {
-    public void start();
-    public void action(int choice);
-    public void newAnimals();
-    public String type();
-    public String kind(String type);
-    public String animalName();
-    public List<String> commands();
-    public Date birthday();
+    void start();
+    void action(int choice);
+    void newAnimals();
+    String type();
+    String kind(String type);
+    String animalName();
+    List<String> commands();
+    Calendar birthday();
 }

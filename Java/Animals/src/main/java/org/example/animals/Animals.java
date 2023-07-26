@@ -1,11 +1,12 @@
 package org.example.animals;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public abstract class Animals {
     protected String name;
-    protected Date birthday;
+    protected Calendar birthday;
     protected List<String> commands;
     protected String type;
     protected String kind;
@@ -16,7 +17,7 @@ public abstract class Animals {
         this.kind = kind;
     }
 
-    protected Animals(String name, Date birthday, List<String> commands, String type, String kind) {
+    protected Animals(String name, Calendar birthday, List<String> commands, String type, String kind) {
         this.name = name;
         this.birthday = birthday;
         this.commands = commands;
