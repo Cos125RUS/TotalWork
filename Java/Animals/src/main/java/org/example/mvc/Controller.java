@@ -1,12 +1,10 @@
 package org.example.mvc;
 
+import org.example.animals.Animals;
 import org.example.exceptions.*;
 import org.example.impl.Ctrl;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.InputMismatchException;
-import java.util.List;
+import java.util.*;
 
 public class Controller implements Ctrl {
     private View ui;
@@ -107,8 +105,29 @@ public class Controller implements Ctrl {
 
     @Override
     public List<String> commands() {
-
-        return null;
+        List<String> commands = new ArrayList<>();
+        ui.enterCommands();
+        boolean flag = true;
+        while (flag) {
+            ui.commandQuestion();
+            try {
+                flag = writer.questionNewCommand();
+                if (flag) {
+                    String command = null;
+                    do {
+                        try {
+                            command = writer.enterCommand();
+                            commands.add(command);
+                        } catch (InputMismatchException | CommandException e) {
+                            ui.commandException();
+                        }
+                    } while (command == null);
+                }
+            } catch (InputMismatchException | QuestionException e) {
+                ui.questionException();
+            }
+        }
+        return commands;
     }
 
     @Override

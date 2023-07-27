@@ -7,4 +7,6 @@ public interface ErrorView {
     void kindException();
     void nameException();
     void birthdayException();
+    void commandException();
+    void questionException();
 }

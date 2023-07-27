@@ -44,7 +44,15 @@ public class Writer implements Enter {
     @Override
     public String enterCommand() throws InputMismatchException {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        String command = scanner.nextLine();
+        if (command.length() == 0 || !command.matches("[^0-9]+"))
+            throw new CommandException();
+        return command;
+    }
+
+    @Override
+    public List<String> enterCommands() throws InputMismatchException {
+        return null;
     }
 
     @Override
@@ -71,9 +79,15 @@ public class Writer implements Enter {
     }
 
     @Override
-    public String questionNewCommand() throws InputMismatchException {
+    public Boolean questionNewCommand() throws InputMismatchException {
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        String answer = scanner.nextLine();
+        if (!answer.equals("yes") && !answer.equals("no") && !answer.equals("y") && !answer.equals("n")){
+            throw new QuestionException();
+        }
+        if (answer.equals("no"))
+            return false;
+        return true;
     }
 
     @Override

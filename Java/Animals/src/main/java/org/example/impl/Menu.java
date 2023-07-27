@@ -14,4 +14,5 @@ public interface Menu {
     void enterType();
     void enterKind();
     void commandQuestion();
+    void enterCommands();
 }

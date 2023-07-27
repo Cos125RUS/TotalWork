@@ -68,6 +68,11 @@ public class View implements Menu, ErrorView {
     }
 
     @Override
+    public void enterCommands() {
+        System.out.print("Enter commands that the animal knows and can follow: ");
+    }
+
+    @Override
     public void inputMismatch() {
         System.out.println("Wrong format of entered data");
     }
@@ -95,6 +100,16 @@ public class View implements Menu, ErrorView {
     @Override
     public void birthdayException() {
         System.out.println("Invalid date");
+    }
+
+    @Override
+    public void commandException() {
+        System.out.println("Invalid command");
+    }
+
+    @Override
+    public void questionException() {
+        System.out.println("Input Error. Please enter 'yes' or 'no'");
     }
 
 }
