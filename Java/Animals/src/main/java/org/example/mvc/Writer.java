@@ -16,7 +16,7 @@ public class Writer implements Enter {
     public int enterChoice() throws InputMismatchException {
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
-        if (choice >= 0 && choice <= 3)
+        if (choice >= 0 && choice <= 4)
             return choice;
         else
             throw new EnterChoiceException();
@@ -94,6 +94,16 @@ public class Writer implements Enter {
         if (answer.equals("no") || answer.equals("n"))
             return false;
         return true;
+    }
+
+    @Override
+    public int choiceAnimal(int length) throws InputMismatchException {
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+        if (choice >= 1 && choice <= length)
+            return choice;
+        else
+            throw new AnimalChoiceException();
     }
 
 }

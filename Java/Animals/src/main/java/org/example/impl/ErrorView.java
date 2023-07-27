@@ -11,4 +11,5 @@ public interface ErrorView {
     void questionException();
     void saveException();
     void loadException();
+    void animalChoiceException();
 }

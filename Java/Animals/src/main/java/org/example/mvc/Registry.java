@@ -27,6 +27,11 @@ public class Registry implements Reg {
         return sb.toString();
     }
 
+    @Override
+    public Animal getAnimal(int index) {
+        return animals.get(index);
+    }
+
     public List<Animal> getAnimals() {
         return animals;
     }
@@ -34,7 +39,6 @@ public class Registry implements Reg {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("(Type/Kind)\tName\tBirthday\tCommands\n");
         for (Animal a: animals) {
             sb.append(a.toString()).append("\n");
         }

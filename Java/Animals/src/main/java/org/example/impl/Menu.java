@@ -1,7 +1,10 @@
 package org.example.impl;
 
+import org.example.animals.Animal;
+
 import java.util.Date;
 import java.util.InputMismatchException;
+import java.util.List;
 
 public interface Menu {
     void showMenu();
@@ -14,4 +17,6 @@ public interface Menu {
     void enterKind();
     void commandQuestion();
     void enterCommands();
+    void choiceAnimal();
+    void showAnimalsList(List<Animal> animals);
 }

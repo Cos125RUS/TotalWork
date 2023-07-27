@@ -5,4 +5,5 @@ import org.example.animals.Animal;
 public interface Reg {
     void newAnimal(Animal animal);
     String toSave();
+    Animal getAnimal(int index);
 }

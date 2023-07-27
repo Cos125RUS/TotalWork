@@ -26,10 +26,9 @@ public class Controller implements Ctrl {
 
     @Override
     public void start() {
-        int userChoice = 0;
         ui.showMenu();
         try {
-            userChoice = writer.enterChoice();
+            int userChoice = writer.enterChoice();
             action(userChoice);
         } catch (InputMismatchException e) {
             ui.inputMismatch();
@@ -55,6 +54,11 @@ public class Controller implements Ctrl {
 
             case 3:
                 save();
+                start();
+                break;
+
+            case 4:
+                train();
                 start();
                 break;
 
@@ -184,6 +188,24 @@ public class Controller implements Ctrl {
                 ui.loadException();
                 e.printStackTrace();
             }
+        }
+    }
+
+    @Override
+    public void train() {
+        ui.choiceAnimal();
+        ui.showAnimalsList(registry.getAnimals());
+        try {
+            int userChoice = writer.choiceAnimal(registry.getAnimals().size()) - 1;
+            Animal trainAnimal = registry.getAnimal(userChoice);
+            // добавить тренировку животного
+
+        } catch (InputMismatchException e) {
+            ui.inputMismatch();
+            train();
+        } catch (AnimalChoiceException e) {
+            ui.animalChoiceException();
+            train();
         }
     }
 }

@@ -17,5 +17,5 @@ public interface Enter {
     String enterType() throws InputMismatchException;
     String enterKind(String type) throws InputMismatchException;
     Boolean questionNewCommand() throws InputMismatchException;
-
+    int choiceAnimal(int length) throws InputMismatchException;
 }

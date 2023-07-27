@@ -14,4 +14,5 @@ public interface Ctrl {
     Calendar birthday();
     void save();
     void load();
+    void train();
 }

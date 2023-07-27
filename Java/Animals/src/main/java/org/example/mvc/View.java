@@ -1,8 +1,11 @@
 package org.example.mvc;
 
+import org.example.animals.Animal;
 import org.example.impl.ErrorView;
 import org.example.impl.Info;
 import org.example.impl.Menu;
+
+import java.util.List;
 
 public class View implements Menu, ErrorView, Info {
     private String mainMenu;
@@ -25,6 +28,7 @@ public class View implements Menu, ErrorView, Info {
         sb.append("1.Show Animals\n");
         sb.append("2.Add Animal\n");
         sb.append("3.Save Changes\n");
+        sb.append("4.Teach a new command\n");
         sb.append("0.Exit\n");
         return sb.toString();
     }
@@ -46,6 +50,7 @@ public class View implements Menu, ErrorView, Info {
 
     @Override
     public void showAnimals(String animals) {
+        System.out.println("(Type/Kind)\tName\tBirthday\tCommands\n");
         System.out.println(animals);
     }
 
@@ -82,6 +87,23 @@ public class View implements Menu, ErrorView, Info {
     @Override
     public void enterCommands() {
         System.out.println("Enter commands that the animal knows and can follow");
+    }
+
+    @Override
+    public void choiceAnimal() {
+        System.out.println("Choose the animal you want to train");
+    }
+
+    @Override
+    public void showAnimalsList(List<Animal> animals) {
+        System.out.println("N\t(Type/Kind)\tName\tBirthday\tCommands");
+        int i = 1;
+        for (Animal animal: animals) {
+            System.out.print(i++);
+            System.out.print('\t');
+            System.out.println(animal.toString());
+        }
+        System.out.print("\n" + input);
     }
 
     @Override
@@ -132,6 +154,11 @@ public class View implements Menu, ErrorView, Info {
     @Override
     public void loadException() {
         System.out.println("Load Error! DataBase file is broken");
+    }
+
+    @Override
+    public void animalChoiceException() {
+        System.out.println("Incorrect animal number entered");
     }
 
 }
