@@ -25,6 +25,12 @@ public class Counter implements CountImpl, AutoCloseable {
     }
 
     @Override
+    public void clear() throws IOException {
+        fw.write("0");
+        fw.flush();
+    }
+
+    @Override
     public void close() throws Exception {
         br.close();
         fw.close();

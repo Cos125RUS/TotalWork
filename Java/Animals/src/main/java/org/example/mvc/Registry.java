@@ -9,11 +9,9 @@ import java.util.List;
 
 public class Registry implements Reg {
     private List<Animal> animals;
-//    private Counter counter;
 
     public Registry() {
         this.animals = new ArrayList<>();
-//        this.counter = new Counter();
     }
 
     @Override
@@ -36,6 +34,13 @@ public class Registry implements Reg {
     @Override
     public Animal getAnimal(int index) {
         return animals.get(index);
+    }
+
+    @Override
+    public void clearCount() throws Exception {
+        try (Counter counter = new Counter()) {
+            counter.clear();
+        }
     }
 
     public List<Animal> getAnimals() {

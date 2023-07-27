@@ -42,29 +42,23 @@ public class Controller implements Ctrl {
     @Override
     public void action(int choice) {
         switch (choice) {
-            case 1:
+            case 1 -> {
                 ui.showAnimals(registry.toString());
                 start();
-                break;
-
-            case 2:
+            }
+            case 2 -> {
                 newAnimals();
                 start();
-                break;
-
-            case 3:
+            }
+            case 3 -> {
                 save();
                 start();
-                break;
-
-            case 4:
+            }
+            case 4 -> {
                 train();
                 start();
-                break;
-
-            case 0:
-                ui.goodBy();
-                break;
+            }
+            case 0 -> ui.goodBy();
         }
     }
 
@@ -80,7 +74,7 @@ public class Controller implements Ctrl {
             registry.newAnimal(newAnimal);
             ui.newAnimal();
         } catch (Exception e) {
-            ui.commandException();
+            ui.counterException();
         }
     }
 
@@ -184,11 +178,16 @@ public class Controller implements Ctrl {
             try {
                 String loadData = db.load();
                 List<Animal> animalList = creator.loadDB(loadData);
+                try {
+                    registry.clearCount();
+                } catch (Exception e){
+                    ui.counterException();
+                }
                 for (Animal animal : animalList) {
                     try {
                         registry.newAnimal(animal);
                     } catch (Exception e){
-                        ui.commandException();
+                        ui.counterException();
                     }
                 }
             } catch (IOException | BirthdayException e) {
