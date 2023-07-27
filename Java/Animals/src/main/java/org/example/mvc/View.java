@@ -1,9 +1,10 @@
 package org.example.mvc;
 
 import org.example.impl.ErrorView;
+import org.example.impl.Info;
 import org.example.impl.Menu;
 
-public class View implements Menu, ErrorView {
+public class View implements Menu, ErrorView, Info {
     private String mainMenu;
     final String input = " > ";
 
@@ -23,6 +24,7 @@ public class View implements Menu, ErrorView {
         sb.append("Main menu:\n");
         sb.append("1.Show Animals\n");
         sb.append("2.Add Animal\n");
+        sb.append("3.Save Changes\n");
         sb.append("0.Exit\n");
         return sb.toString();
     }
@@ -30,6 +32,16 @@ public class View implements Menu, ErrorView {
     @Override
     public void goodBy() {
         System.out.println("Good By");
+    }
+
+    @Override
+    public void newAnimal() {
+        System.out.println("New Animal is added to registry\n");
+    }
+
+    @Override
+    public void save() {
+        System.out.println("All changes is saved");
     }
 
     @Override
@@ -69,7 +81,7 @@ public class View implements Menu, ErrorView {
 
     @Override
     public void enterCommands() {
-        System.out.print("Enter commands that the animal knows and can follow: ");
+        System.out.println("Enter commands that the animal knows and can follow");
     }
 
     @Override
@@ -110,6 +122,16 @@ public class View implements Menu, ErrorView {
     @Override
     public void questionException() {
         System.out.println("Input Error. Please enter 'yes' or 'no'");
+    }
+
+    @Override
+    public void saveException() {
+        System.out.println("Save error");
+    }
+
+    @Override
+    public void loadException() {
+        System.out.println("Load Error! DataBase file is broken");
     }
 
 }

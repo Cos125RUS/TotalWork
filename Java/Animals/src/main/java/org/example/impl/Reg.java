@@ -1,7 +1,8 @@
 package org.example.impl;
 
-import org.example.animals.Animals;
+import org.example.animals.Animal;
 
 public interface Reg {
-    void newAnimal(Animals animal);
+    void newAnimal(Animal animal);
+    String toSave();
 }

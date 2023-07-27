@@ -6,7 +6,6 @@ import java.util.InputMismatchException;
 public interface Menu {
     void showMenu();
     String createMainMenu();
-    void goodBy();
     void showAnimals(String animals);
     void enterName();
     void enterBirthday();

@@ -9,4 +9,6 @@ public interface ErrorView {
     void birthdayException();
     void commandException();
     void questionException();
+    void saveException();
+    void loadException();
 }

@@ -12,4 +12,6 @@ public interface Ctrl {
     String animalName();
     List<String> commands();
     Calendar birthday();
+    void save();
+    void load();
 }

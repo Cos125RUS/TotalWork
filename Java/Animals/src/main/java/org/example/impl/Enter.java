@@ -17,6 +17,5 @@ public interface Enter {
     String enterType() throws InputMismatchException;
     String enterKind(String type) throws InputMismatchException;
     Boolean questionNewCommand() throws InputMismatchException;
-    boolean checkDateString(String date);
-    boolean checkDateArray(Integer[] date);
+
 }

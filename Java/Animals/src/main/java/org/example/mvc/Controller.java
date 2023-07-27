@@ -1,22 +1,27 @@
 package org.example.mvc;
 
-import org.example.animals.Animals;
+import org.example.animals.Animal;
 import org.example.exceptions.*;
 import org.example.impl.Ctrl;
 
+import java.io.IOException;
 import java.util.*;
+
 
 public class Controller implements Ctrl {
     private View ui;
     private Creator creator;
     private Registry registry;
     private Writer writer;
+    private DataBase db;
 
     public Controller() {
         this.ui = new View();
         this.creator = new Creator();
         this.registry = new Registry();
         this.writer = new Writer();
+        this.db = new DataBase();
+        load();
     }
 
     @Override
@@ -40,14 +45,22 @@ public class Controller implements Ctrl {
         switch (choice) {
             case 1:
                 ui.showAnimals(registry.toString());
+                start();
                 break;
 
             case 2:
                 newAnimals();
+                start();
                 break;
 
-            default:
+            case 3:
+                save();
+                start();
+                break;
+
+            case 0:
                 ui.goodBy();
+                start();
                 break;
         }
     }
@@ -59,6 +72,9 @@ public class Controller implements Ctrl {
         String name = animalName();
         Calendar birthday = birthday();
         List<String> commands = commands();
+        Animal newAnimal = creator.newAnimal(type, kind, name, birthday, commands);
+        registry.newAnimal(newAnimal);
+        ui.newAnimal();
     }
 
     @Override
@@ -116,6 +132,7 @@ public class Controller implements Ctrl {
                     String command = null;
                     do {
                         try {
+                            ui.enterCommand();
                             command = writer.enterCommand();
                             commands.add(command);
                         } catch (InputMismatchException | CommandException e) {
@@ -142,5 +159,30 @@ public class Controller implements Ctrl {
             }
         } while (birthday == null);
         return birthday;
+    }
+
+    @Override
+    public void save() {
+        try {
+            db.save(registry);
+            ui.save();
+        } catch (IOException e) {
+            ui.saveException();
+        }
+    }
+
+    @Override
+    public void load() {
+        if (db.checkFile()) {
+            try {
+                String loadData = db.load();
+                List<Animal> animalList = creator.loadDB(loadData);
+                for (Animal animal : animalList) {
+                    registry.newAnimal(animal);
+                }
+            } catch (IOException | BirthdayException e) {
+                ui.loadException();
+            }
+        }
     }
 }

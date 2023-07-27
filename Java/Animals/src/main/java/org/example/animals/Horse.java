@@ -1,10 +1,9 @@
 package org.example.animals;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-public class Horse extends Packs{
+public class Horse extends Pack {
     public Horse(String name) {
         super(name, "Horse");
     }
