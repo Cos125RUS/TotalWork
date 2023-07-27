@@ -39,8 +39,8 @@ public class Creator implements CreateImpl, ParseImpl {
         String[] lines = db.split("\n");
         for (String line : lines) {
             String[] items = line.split(";");
-            Animal animal = newAnimal(items[0], items[1], items[2], parsBirthday(items[3]),
-                    parsCommand(items[4]));
+            Animal animal = newAnimal(items[3], items[4], items[0], parsBirthday(items[1]),
+                    parsCommand(items[2]));
             animals.add(animal);
         }
         return animals;

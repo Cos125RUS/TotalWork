@@ -34,7 +34,7 @@ public class Registry implements Reg {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Name\tbirthday\tcommands\t(Type/Kind)\n");
+        sb.append("(Type/Kind)\tName\tBirthday\tCommands\n");
         for (Animal a: animals) {
             sb.append(a.toString()).append("\n");
         }

@@ -56,6 +56,7 @@ public abstract class Animal {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append('(').append(type).append('/').append(kind).append(')').append('\t');
         sb.append(name).append('\t');
         sb.append(birthday.get(Calendar.DAY_OF_MONTH)).append('.');
         Integer month = birthday.get(Calendar.MONTH) + 1;
@@ -67,7 +68,6 @@ public abstract class Animal {
         for (String command : commands) {
             sb.append(command).append("  ");
         }
-        sb.append('\t').append('(').append(type).append('/').append(kind).append(')');
         return sb.toString();
     }
 }

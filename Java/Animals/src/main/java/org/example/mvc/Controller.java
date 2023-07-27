@@ -182,6 +182,7 @@ public class Controller implements Ctrl {
                 }
             } catch (IOException | BirthdayException e) {
                 ui.loadException();
+                e.printStackTrace();
             }
         }
     }
