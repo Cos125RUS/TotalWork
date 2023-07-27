@@ -64,7 +64,6 @@ public class Controller implements Ctrl {
 
             case 0:
                 ui.goodBy();
-                start();
                 break;
         }
     }
@@ -198,8 +197,11 @@ public class Controller implements Ctrl {
         try {
             int userChoice = writer.choiceAnimal(registry.getAnimals().size()) - 1;
             Animal trainAnimal = registry.getAnimal(userChoice);
-            // добавить тренировку животного
-
+            List<String> newCommands = commands();
+            for (String command: newCommands) {
+                trainAnimal.newCommand(command);
+            }
+            ui.trainingFinish();
         } catch (InputMismatchException e) {
             ui.inputMismatch();
             train();

@@ -49,8 +49,13 @@ public class View implements Menu, ErrorView, Info {
     }
 
     @Override
+    public void trainingFinish() {
+        System.out.println("Training animal is over");
+    }
+
+    @Override
     public void showAnimals(String animals) {
-        System.out.println("(Type/Kind)\tName\tBirthday\tCommands\n");
+        System.out.println("(Type/Kind)\tName\tBirthday\tCommands");
         System.out.println(animals);
     }
 

@@ -1,12 +1,13 @@
 package org.example.animals;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public abstract class Animal {
     protected String name;
     protected Calendar birthday;
-    protected List<String> commands;
+    protected List<String> commands = new ArrayList<>();
     protected String type;
     protected String kind;
 
@@ -19,9 +20,9 @@ public abstract class Animal {
     protected Animal(String name, Calendar birthday, List<String> commands, String type, String kind) {
         this.name = name;
         this.birthday = birthday;
-        this.commands = commands;
         this.type = type;
         this.kind = kind;
+        this.commands.addAll(commands);
     }
 
     protected String getType() {
@@ -32,11 +33,11 @@ public abstract class Animal {
         return kind;
     }
 
-    protected void newCommand(String command) {
+    public void newCommand(String command) {
         commands.add(command);
     }
 
-    public String toSave(){
+    public String toSave() {
         StringBuilder sb = new StringBuilder();
         sb.append(name).append(';');
         sb.append(birthday.get(Calendar.DAY_OF_MONTH)).append('.');

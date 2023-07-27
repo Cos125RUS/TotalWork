@@ -11,4 +11,5 @@ public class Dog extends Pet {
     public Dog(String name, Calendar birthday, List<String> commands) {
         super(name, birthday, commands, "Dog");
     }
+
 }
