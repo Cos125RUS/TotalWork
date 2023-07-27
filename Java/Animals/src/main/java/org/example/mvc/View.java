@@ -166,4 +166,9 @@ public class View implements Menu, ErrorView, Info {
         System.out.println("Incorrect animal number entered");
     }
 
+    @Override
+    public void counterException() {
+        System.out.println("Counter Exception");
+    }
+
 }

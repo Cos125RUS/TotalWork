@@ -76,8 +76,12 @@ public class Controller implements Ctrl {
         Calendar birthday = birthday();
         List<String> commands = commands();
         Animal newAnimal = creator.newAnimal(type, kind, name, birthday, commands);
-        registry.newAnimal(newAnimal);
-        ui.newAnimal();
+        try {
+            registry.newAnimal(newAnimal);
+            ui.newAnimal();
+        } catch (Exception e) {
+            ui.commandException();
+        }
     }
 
     @Override
@@ -181,7 +185,11 @@ public class Controller implements Ctrl {
                 String loadData = db.load();
                 List<Animal> animalList = creator.loadDB(loadData);
                 for (Animal animal : animalList) {
-                    registry.newAnimal(animal);
+                    try {
+                        registry.newAnimal(animal);
+                    } catch (Exception e){
+                        ui.commandException();
+                    }
                 }
             } catch (IOException | BirthdayException e) {
                 ui.loadException();
@@ -198,7 +206,7 @@ public class Controller implements Ctrl {
             int userChoice = writer.choiceAnimal(registry.getAnimals().size()) - 1;
             Animal trainAnimal = registry.getAnimal(userChoice);
             List<String> newCommands = commands();
-            for (String command: newCommands) {
+            for (String command : newCommands) {
                 trainAnimal.newCommand(command);
             }
             ui.trainingFinish();

@@ -1,0 +1,2 @@
+Spock;11.02.1999;jump/run;Pet;Dog
+Kirca;11.02.1999;sleep;Pet;Dog
